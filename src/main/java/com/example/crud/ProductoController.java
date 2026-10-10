@@ -22,12 +22,12 @@ public class ProductoController {
     }
 
     @GetMapping // GET a /api/productos , devuelve la lista completa en JSON
-    public List<Producto> listar() {
+    public List<ProductoResponse> listar() {
         return service.listar();
     }
 
     @GetMapping("/{id}") // GET a /api/productos/1, devuelve un solo producto
-    public ResponseEntity<Producto> obtener(@PathVariable Long id) { // devuelve una respuesta HTTP usando la anotacion
+    public ResponseEntity<ProductoResponse> obtener(@PathVariable Long id) { // devuelve una respuesta HTTP usando la anotacion
                                                                      // de la direccion web para capturar el id de la
                                                                      // url.
         return service.obtener(id) // Busca el id
@@ -36,15 +36,15 @@ public class ProductoController {
     }
 
     @PostMapping // POST a /api/productos, Crea un producto
-    public Producto crear(@Valid @RequestBody Producto producto) { // Spring recibe el JSON y lo convierte en un objeto
+    public ProductoResponse crear(@Valid @RequestBody ProductoRequest request) { // Spring recibe el JSON y lo convierte en un objeto
                                                             // Producto
-        return service.crear(producto); // Lo guarda en la base de datos, con su id asignado.
+        return service.crear(request); // Lo guarda en la base de datos, con su id asignado.
     }
 
     @PutMapping("/{id}") // PUT a /api/productos/{id}, Actualiza un producto completo.
-    public ResponseEntity<Producto> actualizar(@PathVariable Long id,
-            @Valid @RequestBody Producto datos) { // recibe el id de la ruta y el objeto producto con los datos a actualizar
-        return service.actualizar(id, datos) // busca el producto por id
+    public ResponseEntity<ProductoResponse> actualizar(@PathVariable Long id,
+            @Valid @RequestBody ProductoRequest request) { // recibe el id de la ruta y el objeto producto con los datos a actualizar
+        return service.actualizar(id, request) // busca el producto por id
                 .map(ResponseEntity::ok) // devuelve ok si se actualizó correctamente
                 .orElse(ResponseEntity.notFound().build()); // devuelve no encontrado si no existe
     }

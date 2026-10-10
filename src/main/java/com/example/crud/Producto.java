@@ -10,13 +10,8 @@ public class Producto { //al arrancar spirng crea automáticamente la tabla prod
     @Id //anotacion o etiqueta para que JPA lo pueda leer
     @GeneratedValue(strategy = GenerationType.IDENTITY) //la base de datos genera el id automáticamente e incremental
     private Long id; //clave primaria, long es la clase e id es la variable
-
-    @NotBlank(message = "El nombre es obligatorio")
-    @Size(max = 100, message = "El nombre no puede superar los 100 caracteres")
+    
     private String nombre;
-
-    @NotNull(message = "El precio es obligatorio")
-    @Positive(message = "El precio debe ser mayor que 0")
     private Double precio; // es Double (objeto) y no double (primitivo), porque permite valores nulos, de la otra manera se asigna 0.0 por defecto en valores nulos
 
     public Producto() {} //constructor vacío, obligatorio para JPA para crear objetos al leer la base de datos y Spring también al convertir el JSON que recibes.

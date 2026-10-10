@@ -16,30 +16,33 @@ public class ProductoService {
     }
     //constructor que recibe el repositorio como parametro  y se lo asigna a la variable privada repo
 
-    public List<Producto> listar() {
-        return repo.findAll();
+    public List<ProductoResponse> listar() {
+        
+        return repo.findAll().stream()
+        .map(ProductoMapper::toResponse)
+        .toList();
     }
     //busca todos los productos
-    public Optional<Producto> obtener(Long id) {
-        return repo.findById(id);
+    public Optional<ProductoResponse> obtener(Long id) {
+        return repo.findById(id).map(ProductoMapper::toResponse);
     }
     //crea un producto
-    public Producto crear(Producto producto) {
-        if (repo.existsByNombreIgnoreCase(producto.getNombre())) {
-            throw new NombreDuplicadoException(producto.getNombre());
+    public ProductoResponse crear(ProductoRequest request) {
+       if (repo.existsByNombreIgnoreCase(request.nombre())) {
+            throw new NombreDuplicadoException(request.nombre());
         }
-        producto.setId(null);   //le ponemos null al id porque el id siempre lo asigna la base de datos. Es la primera regla del negocio. Sin ella, si alguien envia un id en un POST, save sobreescribe en lugar de crear uno nuevo
-        return repo.save(producto);
+        Producto guardado = repo.save(ProductoMapper.toEntity(request));
+        return ProductoMapper.toResponse(guardado);
     }
     //actualiza un producto por id
-    public Optional<Producto> actualizar(Long id, Producto datos) {
+    public Optional<ProductoResponse> actualizar(Long id, ProductoRequest request) {
         return repo.findById(id).map(p -> {
-            if (repo.existsByNombreIgnoreCaseAndIdNot(datos.getNombre(), id)) {
-                throw new NombreDuplicadoException(datos.getNombre());
+            if (repo.existsByNombreIgnoreCaseAndIdNot(request.nombre(), id)) {
+                throw new NombreDuplicadoException(request.nombre());
             }
-            p.setNombre(datos.getNombre());
-            p.setPrecio(datos.getPrecio());
-            return repo.save(p);
+            p.setNombre(request.nombre());
+            p.setPrecio(request.precio());
+            return ProductoMapper.toResponse(repo.save(p));
         });
     }
     //elimina un producto por id
