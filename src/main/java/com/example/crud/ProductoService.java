@@ -25,12 +25,18 @@ public class ProductoService {
     }
     //crea un producto
     public Producto crear(Producto producto) {
+        if (repo.existsByNombreIgnoreCase(producto.getNombre())) {
+            throw new NombreDuplicadoException(producto.getNombre());
+        }
         producto.setId(null);   //le ponemos null al id porque el id siempre lo asigna la base de datos. Es la primera regla del negocio. Sin ella, si alguien envia un id en un POST, save sobreescribe en lugar de crear uno nuevo
         return repo.save(producto);
     }
     //actualiza un producto por id
     public Optional<Producto> actualizar(Long id, Producto datos) {
         return repo.findById(id).map(p -> {
+            if (repo.existsByNombreIgnoreCaseAndIdNot(datos.getNombre(), id)) {
+                throw new NombreDuplicadoException(datos.getNombre());
+            }
             p.setNombre(datos.getNombre());
             p.setPrecio(datos.getPrecio());
             return repo.save(p);
