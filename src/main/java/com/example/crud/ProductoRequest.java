@@ -10,5 +10,8 @@ public record ProductoRequest( // record es una forma corta de escribir una clas
 
     @NotNull(message = "El precio es obligatorio")
     @Positive(message = "El precio debe ser mayor que 0")
-    Double precio
+    Double precio,
+    
+    @NotNull(message = "La categoría es obligatoria") //--> aqui se produce la anidacion, se pasa el id como referencia (de la categoria) y Spring se encarga de convertirlo en Categoria.
+    Long categoriaId
 ) {}

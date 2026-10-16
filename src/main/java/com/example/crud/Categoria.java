@@ -13,7 +13,7 @@ public class Categoria {
 
     private String nombre;
 
-    @OneToMany(mappedBy = "categoria") // Indica que esta categoría tiene muchos productos, y el mappedBy indica que la relación está controlada por el campo "categoria" de la clase Producto.
+    @OneToMany(mappedBy = "categoria") // Indica que esta categoría tiene muchos productos, y el mappedBy indica que la relación está controlada por el campo "categoria" de la clase Producto. El dueño es el que tiene @ManyToOne que tiene la columna categoria_id
     private List<Producto> productos = new ArrayList<>(); // al leer una categoria JPA puede rellenar esta lista con sus productos, empieza con una lista vacia
 
     public Categoria() {}

@@ -27,5 +27,5 @@ public class Producto { //al arrancar spirng crea automáticamente la tabla prod
     public Double getPrecio() { return precio; }
     public void setPrecio(Double precio) { this.precio = precio; }
     public Categoria getCategoria() { return categoria; }
-    public void setCategoria(Categoria categoria) { this.categoria = categoria; }
+    public void setCategoria(Categoria categoria) { this.categoria = categoria; } // para asignar una categoria a un producto siempre se hace producto.setCategoria(...)
 }
