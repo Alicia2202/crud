@@ -1,7 +1,7 @@
 package com.example.crud; //indica en que paquete vive la clase y debe coincidir con la ruta com/example/crud
 
 import jakarta.persistence.*; //trae las anotaciones de JPA (los objetos de la programacion orientada a objetos que se usan en springboot para mapear las tablas de la base de datos relacionales)
-import jakarta.validation.constraints.*; //trae anotaciones de validacion de datos
+//import jakarta.validation.constraints.*; //trae anotaciones de validacion de datos
 
 
 @Entity // le dice a Spring que esta clase es una entidad, es decir, una tabla de la base de datos
