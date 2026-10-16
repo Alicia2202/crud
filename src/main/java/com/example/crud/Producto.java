@@ -14,6 +14,10 @@ public class Producto { //al arrancar spirng crea automáticamente la tabla prod
     private String nombre;
     private Double precio; // es Double (objeto) y no double (primitivo), porque permite valores nulos, de la otra manera se asigna 0.0 por defecto en valores nulos
 
+    @ManyToOne //añadimos la relacion de categoria a producto
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria; //agregamos el campo categoria
+
     public Producto() {} //constructor vacío, obligatorio para JPA para crear objetos al leer la base de datos y Spring también al convertir el JSON que recibes.
 
     public Long getId() { return id; } //GETTERS, metodo para leer los atributos privados 
@@ -22,4 +26,6 @@ public class Producto { //al arrancar spirng crea automáticamente la tabla prod
     public void setNombre(String nombre) { this.nombre = nombre; }
     public Double getPrecio() { return precio; }
     public void setPrecio(Double precio) { this.precio = precio; }
+    public Categoria getCategoria() { return categoria; }
+    public void setCategoria(Categoria categoria) { this.categoria = categoria; }
 }
