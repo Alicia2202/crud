@@ -24,4 +24,16 @@ public class ManejadorErrores {
     public Map<String, String> nombreDuplicado(NombreDuplicadoException ex) { // objeto que contiene los errores
         return Map.of("error", ex.getMessage()); // devuelve el mapa de errores
     }
+
+    @ExceptionHandler(CategoriaNoEncontradaException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Map<String, String> categoriaNoEncontrada(CategoriaNoEncontradaException ex) {
+        return Map.of("error", ex.getMessage());
+    }
+
+    @ExceptionHandler(CategoriaConProductosException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public Map<String, String> categoriaConProductos(CategoriaConProductosException ex) {
+        return Map.of("error", ex.getMessage());
+    }
 }
