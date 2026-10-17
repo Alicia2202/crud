@@ -36,4 +36,10 @@ public class ManejadorErrores {
     public Map<String, String> categoriaConProductos(CategoriaConProductosException ex) {
         return Map.of("error", ex.getMessage());
     }
+
+    @ExceptionHandler(CategoriaDuplicadaException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public Map<String, String> categoriaDuplicada(CategoriaDuplicadaException ex) {
+        return Map.of("error", ex.getMessage());
+    }
 }

@@ -26,14 +26,20 @@ public class CategoriaService {
     }
 
     public CategoriaResponse crear(CategoriaRequest request) {
+        if (repo.existsByNombreIgnoreCase(request.nombre())) {
+            throw new CategoriaDuplicadaException(request.nombre());
+        }
         Categoria guardada = repo.save(CategoriaMapper.toEntity(request));
         return CategoriaMapper.toResponse(guardada);
     }
 
     public Optional<CategoriaResponse> actualizar(Long id, CategoriaRequest request) {
-        return repo.findById(id).map(entity -> {
-            entity.setNombre(request.nombre());
-            return CategoriaMapper.toResponse(repo.save(entity));
+        return repo.findById(id).map(c -> {
+            if (repo.existsByNombreIgnoreCaseAndIdNot(request.nombre(), id)){
+                throw new CategoriaDuplicadaException(request.nombre());
+            }
+            c.setNombre(request.nombre());
+            return CategoriaMapper.toResponse(repo.save(c));
         });
     }
 
