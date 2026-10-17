@@ -1,4 +1,5 @@
-package com.example.crud;
+package com.example.crud.dto;
+
 
 import jakarta.validation.constraints.*;
 

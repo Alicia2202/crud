@@ -1,4 +1,13 @@
-package com.example.crud;
+package com.example.crud.service;
+
+import com.example.crud.entity.Categoria;
+import com.example.crud.repository.ProductoRepository;
+import com.example.crud.repository.CategoriaRepository;
+import com.example.crud.dto.CategoriaRequest;
+import com.example.crud.dto.CategoriaResponse;
+import com.example.crud.mapper.CategoriaMapper;
+import com.example.crud.exception.CategoriaDuplicadaException;
+import com.example.crud.exception.CategoriaConProductosException;
 
 import org.springframework.stereotype.Service;
 import java.util.List;

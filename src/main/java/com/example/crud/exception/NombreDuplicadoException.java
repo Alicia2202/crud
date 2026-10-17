@@ -1,4 +1,4 @@
-package com.example.crud;
+package com.example.crud.exception;
 //es una excepcion con nombre propio . RuntimeException hace que no sea obligatorio declararla con throws y super(...) guarda el mensaje.
 
 public class NombreDuplicadoException extends RuntimeException {

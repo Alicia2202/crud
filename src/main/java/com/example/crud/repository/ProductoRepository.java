@@ -1,4 +1,6 @@
-package com.example.crud;
+package com.example.crud.repository;
+
+import com.example.crud.entity.Producto;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;

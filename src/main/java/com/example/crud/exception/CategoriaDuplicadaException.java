@@ -1,4 +1,4 @@
-package com.example.crud;
+package com.example.crud.exception;
 
 public class CategoriaDuplicadaException extends RuntimeException {
     public CategoriaDuplicadaException(String nombre) {

@@ -1,4 +1,10 @@
-package com.example.crud;
+package com.example.crud.controller;
+
+import com.example.crud.dto.ProductoResponse;
+import com.example.crud.dto.CategoriaRequest;
+import com.example.crud.dto.CategoriaResponse;
+import com.example.crud.service.ProductoService;
+import com.example.crud.service.CategoriaService;
 
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

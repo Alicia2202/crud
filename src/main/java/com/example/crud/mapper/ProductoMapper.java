@@ -1,4 +1,10 @@
-package com.example.crud;
+package com.example.crud.mapper;
+
+import com.example.crud.entity.Producto;
+import com.example.crud.entity.Categoria;
+import com.example.crud.dto.ProductoRequest;
+import com.example.crud.dto.ProductoResponse;
+import com.example.crud.dto.CategoriaResponse;
 // sirve para transformar Request a Entity (producto) y viceversa. Es decir, alguien que convierta el DTO  en entidad y la entidad en DTO.
 public class ProductoMapper {
 

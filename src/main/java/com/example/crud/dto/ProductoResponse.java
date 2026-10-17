@@ -1,4 +1,4 @@
-package com.example.crud;
+package com.example.crud.dto;
 
 // DTO de salida: lo que el cliente ve en el JSON de respuesta
 public record ProductoResponse(

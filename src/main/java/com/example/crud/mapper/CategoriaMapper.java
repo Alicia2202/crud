@@ -1,4 +1,8 @@
-package com.example.crud;
+package com.example.crud.mapper;
+
+import com.example.crud.entity.Categoria;
+import com.example.crud.dto.CategoriaRequest;
+import com.example.crud.dto.CategoriaResponse;
 
 public class CategoriaMapper {
 

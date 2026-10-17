@@ -1,4 +1,8 @@
-package com.example.crud;
+package com.example.crud.controller;
+
+import com.example.crud.dto.ProductoRequest;
+import com.example.crud.dto.ProductoResponse;
+import com.example.crud.service.ProductoService;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

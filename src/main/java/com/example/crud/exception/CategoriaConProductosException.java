@@ -1,4 +1,4 @@
-package com.example.crud;
+package com.example.crud.exception;
 
 public class CategoriaConProductosException extends RuntimeException {
     public CategoriaConProductosException(Long id) {

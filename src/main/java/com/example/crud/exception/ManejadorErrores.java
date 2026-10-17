@@ -1,4 +1,4 @@
-package com.example.crud;
+package com.example.crud.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
