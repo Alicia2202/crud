@@ -39,6 +39,14 @@ public class CategoriaController {
         return service.crear(request);
     }
 
+    @PutMapping("/{id}") // PUT a /api/categorias/{id}, Actualiza una categoria completo.
+    public ResponseEntity<CategoriaResponse> actualizar(@PathVariable Long id,
+            @Valid @RequestBody CategoriaRequest request) { // recibe el id de la ruta y el objeto categoria con los datos a actualizar
+        return service.actualizar(id, request) // busca la categoria por id
+                .map(ResponseEntity::ok) // devuelve ok si se actualizó correctamente
+                .orElse(ResponseEntity.notFound().build()); // devuelve no encontrado si no existe
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         if (service.eliminar(id)) {

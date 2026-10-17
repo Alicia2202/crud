@@ -30,6 +30,13 @@ public class CategoriaService {
         return CategoriaMapper.toResponse(guardada);
     }
 
+    public Optional<CategoriaResponse> actualizar(Long id, CategoriaRequest request) {
+        return repo.findById(id).map(entity -> {
+            entity.setNombre(request.nombre());
+            return CategoriaMapper.toResponse(repo.save(entity));
+        });
+    }
+
     public boolean eliminar(Long id) {
         if (!repo.existsById(id)) {
             return false;
