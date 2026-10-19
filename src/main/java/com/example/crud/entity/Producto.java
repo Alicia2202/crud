@@ -2,9 +2,14 @@ package com.example.crud.entity; //indica en que paquete vive la clase y debe co
 
 import jakarta.persistence.*; //trae las anotaciones de JPA (los objetos de la programacion orientada a objetos que se usan en springboot para mapear las tablas de la base de datos relacionales)
 //import jakarta.validation.constraints.*; //trae anotaciones de validacion de datos
-
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity // le dice a Spring que esta clase es una entidad, es decir, una tabla de la base de datos
+@Getter //GETTERS, metodo para leer los atributos privados tanto para id como para nombre, precio y categoria
+@Setter //SETTERS, metodo para modificar los atributos privados tanto para id como para nombre, precio y categoria.
+
 public class Producto { //al arrancar spirng crea automáticamente la tabla producto
 
     @Id //anotacion o etiqueta para que JPA lo pueda leer
@@ -18,14 +23,7 @@ public class Producto { //al arrancar spirng crea automáticamente la tabla prod
     @JoinColumn(name = "categoria_id")
     private Categoria categoria; //agregamos el campo categoria
 
-    public Producto() {} //constructor vacío, obligatorio para JPA para crear objetos al leer la base de datos y Spring también al convertir el JSON que recibes.
+    public Producto() {}
+    
 
-    public Long getId() { return id; } //GETTERS, metodo para leer los atributos privados 
-    public void setId(Long id) { this.id = id; } //SETTERS, metodo para modificar los atributos privados . Spring usa Getters y setterr para convertis el objeto a JSON y al revés.
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-    public Double getPrecio() { return precio; }
-    public void setPrecio(Double precio) { this.precio = precio; }
-    public Categoria getCategoria() { return categoria; }
-    public void setCategoria(Categoria categoria) { this.categoria = categoria; } // para asignar una categoria a un producto siempre se hace producto.setCategoria(...)
 }
