@@ -42,4 +42,9 @@ public class ManejadorErrores {
     public Map<String, String> categoriaDuplicada(CategoriaDuplicadaException ex) {
         return Map.of("error", ex.getMessage());
     }
+    @ExceptionHandler(UsuarioDuplicadoException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public Map<String, String> usuarioDuplicado(UsuarioDuplicadoException ex) {
+        return Map.of("error", ex.getMessage());
+    }
 }
