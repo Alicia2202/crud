@@ -47,4 +47,9 @@ public class ManejadorErrores {
     public Map<String, String> usuarioDuplicado(UsuarioDuplicadoException ex) {
         return Map.of("error", ex.getMessage());
     }
+    @ExceptionHandler(CredencialesInvalidasException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public Map<String, String> credencialesInvalidas(CredencialesInvalidasException ex) {
+        return Map.of("error", ex.getMessage());
+    }
 }
