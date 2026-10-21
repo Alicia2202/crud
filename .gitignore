@@ -35,3 +35,6 @@ build/
 
 ### SQLTools ###
 *.session.sql
+
+### Environment Variables ###
+.env
