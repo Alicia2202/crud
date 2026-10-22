@@ -1,6 +1,8 @@
 package com.example.crud.controller;
 
+import com.example.crud.dto.LoginRequest;
 import com.example.crud.dto.RegistroRequest;
+import com.example.crud.dto.TokenResponse;
 import com.example.crud.dto.UsuarioResponse;
 import com.example.crud.service.AuthService;
 import jakarta.validation.Valid;
@@ -22,6 +24,11 @@ public class AuthController {
     @PostMapping("/registro")
     public UsuarioResponse registrar(@Valid @RequestBody RegistroRequest request) {
         return service.registrar(request);
+    }
+
+    @PostMapping("/login")
+    public TokenResponse login(@Valid @RequestBody LoginRequest request) {
+        return service.login(request);
     }
 
     @GetMapping("/yo")
