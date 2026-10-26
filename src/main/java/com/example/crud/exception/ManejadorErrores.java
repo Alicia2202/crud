@@ -52,4 +52,9 @@ public class ManejadorErrores {
     public Map<String, String> credencialesInvalidas(CredencialesInvalidasException ex) {
         return Map.of("error", ex.getMessage());
     }
+    @ExceptionHandler(TokenGoogleInvalidoException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public Map<String, String> tokenGoogleInvalido(TokenGoogleInvalidoException ex) {
+        return Map.of("error", ex.getMessage());
+    }
 }

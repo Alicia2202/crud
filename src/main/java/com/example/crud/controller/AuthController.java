@@ -1,5 +1,6 @@
 package com.example.crud.controller;
 
+import com.example.crud.dto.GoogleLoginRequest;
 import com.example.crud.dto.LoginRequest;
 import com.example.crud.dto.RegistroRequest;
 import com.example.crud.dto.TokenResponse;
@@ -37,5 +38,10 @@ public class AuthController {
             "username", auth.getName(),
             "roles", auth.getAuthorities().stream().map(GrantedAuthority::getAuthority).toList()
         );
+    }
+    
+    @PostMapping("/google")
+    public TokenResponse loginConGoogle(@Valid @RequestBody GoogleLoginRequest request) {
+    return service.loginConGoogle(request);
     }
 }

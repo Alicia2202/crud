@@ -58,6 +58,7 @@ public class SecurityConfig {
                 .requestMatchers("/error").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/**").authenticated()
                 .requestMatchers("/api/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/auth/registro", "/api/auth/login", "/api/auth/google").permitAll()
                 .anyRequest().authenticated()
             )
             .oauth2ResourceServer(oauth -> oauth //sustituye a .httpBasic() ahora srping espra authorization bearer <token> en el header http. Bearer es el esquema de autenticación 
